@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: ToDo App
- * Description: Custom Plugin for ToDo App
+ * Description: Custom Plugin for my ToDo App
  * Version: 0.1
  * Author: Daron Spence
  */
@@ -212,7 +212,7 @@ add_action( 'wp_loaded', function(){
 	if ( ! empty( $_POST['invite_friend'] ) && ( $_POST['invite_friend'] === 'true' ) ){
 
 		$email = sanitize_email( $_POST['email'] );
-		
+
 		$sender = get_userdata( intval( $_POST['author'] ) );
 
 		$sender = "{$sender->data->display_name} ({$sender->data->user_email})";
