@@ -211,6 +211,14 @@ add_action( 'wp_loaded', function(){
 
 	if ( ! empty( $_POST['invite_friend'] ) && ( $_POST['invite_friend'] === 'true' ) ){
 
+		add_filter( 'mandrill_payload', function( $payload ){
+
+			# $payload['template']['content'] # Multi-dimensional array of MC tags https://mandrill.zendesk.com/hc/en-us/articles/205582497
+
+			return $payload;
+			
+		} );
+
 		$email = sanitize_email( $_POST['email'] );
 
 		$sender = get_userdata( intval( $_POST['author'] ) );
