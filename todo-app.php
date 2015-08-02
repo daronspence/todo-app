@@ -115,7 +115,7 @@ add_action( 'wp_loaded', function(){
 			die('Cheatin huh?');
 
 		$item = esc_html( $_POST['todo_item_add'] );
-		$author = intval( $_POST['author'] );
+		$author = get_current_user_id();
 		$device = ! empty( $_POST['device'] ) ? esc_html( $_POST['device'] ) : false ;
 
 		$new_todo = wp_insert_post( array( 'post_type' => 'todos', 'post_author' => $author, 'post_title' => $item, 'post_status' => 'publish' ), true );
@@ -200,7 +200,7 @@ add_action( 'wp_loaded', function(){
 		if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'add-item' ) )
 			die('Cheatin huh?');
 
-		$author = intval( $_POST['author'] );
+		$author = get_current_user_id();
 		$new_nickname = esc_html( $_POST['updateUsername'] );
 
 		wp_update_user( array( 'ID' =>$author, 'nickname' => $new_nickname ) );
@@ -216,7 +216,7 @@ add_action( 'wp_loaded', function(){
 			# $payload['template']['content'] # Multi-dimensional array of MC tags https://mandrill.zendesk.com/hc/en-us/articles/205582497
 
 			return $payload;
-			
+
 		} );
 
 		$email = sanitize_email( $_POST['email'] );
