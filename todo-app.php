@@ -34,6 +34,7 @@ function register_todo_cpt() {
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
+		'show_in_rest'		  => true,
 		'menu_position'       => 25,
 		'menu_icon'           => 'dashicons-editor-ul',
 		'show_in_admin_bar'   => true,
